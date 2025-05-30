@@ -1,12 +1,68 @@
-# React + Vite
+🎥 Video_Player – Full-Stack Video Sharing App
+Video_Player is a full-stack video sharing platform inspired by YouTube. It allows users to upload, watch, and manage videos, interact through comments and likes, follow creators, and explore trending content. The app is built with secure authentication and modular architecture.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔐 Authentication
+JWT/session-based login, signup, logout
 
-Currently, two official plugins are available:
+Protected routes and user profile updates
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🏠 Home / Dashboard
+Personalized feed with:
 
-## Expanding the ESLint configuration
+New uploads
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Trending videos
+
+Search results
+
+📺 Channel Management
+Create/update channels
+
+Edit profile picture and banner
+
+🎬 Video Management
+Upload, edit, delete videos
+
+Video page includes:
+
+Likes, views, timestamp, comments
+
+📁 Playlist Management
+Create playlists
+
+Add/remove videos
+
+👤 Follow System
+Follow/unfollow channels
+
+Get notifications for new videos
+
+🔍 Explore & Search
+Keyword search
+
+New feed
+
+Trending section
+
+💡 Tech Stack
+Frontend: React, Zustand/Redux, Bootstrap/Tailwind
+
+Backend: Node.js, Express.js
+
+Database: MongoDB, Mongoose
+
+Auth: JWT, Cookies
+
+Uploads: Multer, Cloud storage (e.g., Cloudinary)
+
+🚀 Run Locally
+bash
+Copy
+Edit
+# Backend
+cd server && npm install && npm run dev
+
+# Frontend
+cd client && npm install && npm start
+📄 License
+Open-source under the MIT License.
