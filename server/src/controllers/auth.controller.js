@@ -64,3 +64,79 @@ export const createAccount = async (req, res) => {
         });
     }
 };
+
+// Login User
+export const login = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(400).json({
+                message: "Invalid credentials Email is invalid"
+            });
+        }
+
+        const isPasswordCorrect = await bcrypt.compare(password, user.password);
+        if (!isPasswordCorrect) {
+            return res.status(400).json({
+                message: "Invalid credentials Password is invalid"
+            });
+        }
+
+        generateToken(user._id, res);
+
+        res.status(200).json({
+            _id: newUser._id,
+            username: newUser.username,
+            email: newUser.email,
+            profilePic: newUser.profilePic,
+            channelBanner: newUser.channelBanner,
+        });
+    } catch (error) {
+        console.log("Error in login controller", error.message);
+        res.status(500).json({
+            message: "Internal Server Error"
+        });
+    }
+};
+
+// Get Logged In User
+export const getLoggedInUser = async (req, res) => {
+    try {
+        const userId = req.user._id;
+
+        if (!userId) {
+            return res.status(401).json({
+                message: "Not authorized"
+            });
+        }
+
+        const user = await User.findById(userId).select('-password');
+
+        if (!user) {
+            return res.status(404).json({
+                message: "User not found"
+            });
+        }
+
+        res.status(200).json(user);
+    } catch (error) {
+        console.log("Error in getLoggedInUser controller", error.message);
+        res.status(500).json({
+            message: "Internal Server Error"
+        });
+    }
+};
+
+// Check Auth 
+export const CheckAuth = async (req, res) => {
+    try {
+        res.status(200).json(req.user);
+    } catch (error) {
+        console.log("Error in checkAuth controller", error.message);
+        res.status(500).json({
+            message: "Internal server Error"
+        });
+    }
+};
