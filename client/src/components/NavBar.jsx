@@ -2,6 +2,7 @@ import React from 'react';
 import VistroLogo from '../assets/VistroLogo';
 import { IoIosNotifications } from "react-icons/io";
 import { MdOutlineAccountCircle, MdSearch } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 function NavBar() {
     return (
@@ -41,7 +42,9 @@ function NavBar() {
                         <IoIosNotifications />
                     </div>
                     <div>
-                        <MdOutlineAccountCircle />
+                        <Link to='/profile'>
+                            <MdOutlineAccountCircle />
+                        </Link>
                     </div>
                 </div>
 

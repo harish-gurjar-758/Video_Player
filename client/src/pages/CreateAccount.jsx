@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import VistroLogo from '../assets/VistroLogo';
-import { createAccount } from '../services/api';
+import { useAuthStore } from '../store/useAuthStore';
 
 export default function CreateAccountForm() {
   const [userData, setUserData] = useState({
@@ -8,6 +8,7 @@ export default function CreateAccountForm() {
     email: '',
     password: '',
   });
+  const { createAccount } = useAuthStore();
 
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -34,9 +35,9 @@ export default function CreateAccountForm() {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="username" className="block text-sm font-medium text-gray-900">
+        <form onSubmit={handleSubmit} className="space-y-6 d-flex align-items-center justify-content-center flex-column gap-3">
+          <div className='form-control bg-dark w-30'>
+            <label htmlFor="username" className="block text-sm font-medium">
               Full Name
             </label>
             <div className="mt-2">
@@ -47,7 +48,7 @@ export default function CreateAccountForm() {
                 required
                 value={userData.username}
                 onChange={handleChange}
-                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
+                className="block w-full rounded-md px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
               />
             </div>
           </div>
@@ -81,7 +82,7 @@ export default function CreateAccountForm() {
                 required
                 value={userData.password}
                 onChange={handleChange}
-                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
+                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-dark outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
               />
             </div>
           </div>

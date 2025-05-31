@@ -32,7 +32,7 @@ export default function Home() {
             style={{ paddingTop: "70px" }}
         >
             <Sidebar onSelect={setActiveSection} />
-            <div style={{ marginLeft: "200px", flex: 1 }}>
+            <div style={{ marginLeft: "20px", flex: 1 }}>
                 {renderSection()}
             </div>
         </div>
