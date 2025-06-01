@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import toast from 'react-hot-toast';
-import { axiosInstance } from '../services/api.js'; // make sure this has withCredentials enabled
+import { axiosInstance } from '../services/axiosApi.js'; // make sure this has withCredentials enabled
 
 export const useAuthStore = create((set, get) => ({
   user: null,
