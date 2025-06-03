@@ -2,7 +2,7 @@ import React from 'react';
 import { BsPlayBtnFill } from 'react-icons/bs';
 import { FaRegSmileWink } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import welcomeGif from '../assets/welcome.gif'; // make sure to add a suitable GIF in your assets folder
+import welcomeGif from '../../assets/welcome.gif'; // make sure to add a suitable GIF in your assets folder
 
 export default function HomeVideosList() {
   return (

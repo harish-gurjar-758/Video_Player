@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
-import HomeVideosList from './HomeVideosList';
-import NewsFeed from './NewsFeed';
-import Trending from './Trending';
-import Playlist from './Playlist';
-import Following from './Following';
+import HomeVideosList from './sections/HomeVideosList';
+import NewsFeed from './sections/NewsFeed';
+import Trending from './sections/Trending';
+import Playlist from './sections/Playlist';
+import Following from './sections/Following';
 
 export default function Home() {
     const [activeSection, setActiveSection] = useState('home');

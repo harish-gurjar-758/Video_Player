@@ -1,12 +1,27 @@
-import { useAuthStore } from '../store/useAuthStore';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getLoggedInUserApi } from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
 export default function Profile() {
-  const { user, getLoggedInUser, loading } = useAuthStore();
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getLoggedInUser();
-  }, []); // ✅ run only once on mount
+    const fetchUser = async () => {
+      try {
+        const data = await getLoggedInUserApi();
+        setUser(data.user || data);
+      } catch (error) {
+        console.error("Error fetching user:", error.message);
+        navigate("/login"); // redirect to login page
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUser();
+  }, [navigate]);
 
   return (
     <div style={{ paddingTop: '70px' }}>
@@ -22,7 +37,6 @@ export default function Profile() {
             width={100}
             height={100}
           />
-          {/* Add more user info if needed */}
         </div>
       ) : (
         <p>User not logged in.</p>
