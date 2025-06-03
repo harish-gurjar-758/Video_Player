@@ -1,3 +1,4 @@
+// components/Profile.jsx
 import React, { useEffect, useState } from 'react';
 import { getLoggedInUserApi } from '../services/api';
 import { useNavigate } from 'react-router-dom';
@@ -11,10 +12,10 @@ export default function Profile() {
     const fetchUser = async () => {
       try {
         const data = await getLoggedInUserApi();
-        setUser(data.user || data);
+        setUser(data.user); // API returns { user: {...} }
       } catch (error) {
         console.error("Error fetching user:", error.message);
-        navigate("/login"); // redirect to login page
+        navigate("/login");
       } finally {
         setLoading(false);
       }
@@ -36,6 +37,7 @@ export default function Profile() {
             alt="Profile"
             width={100}
             height={100}
+            style={{ borderRadius: '50%', objectFit: 'cover' }}
           />
         </div>
       ) : (

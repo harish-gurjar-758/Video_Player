@@ -102,41 +102,33 @@ export const login = async (req, res) => {
 };
 
 // Get Logged In User
+
 export const getLoggedInUser = async (req, res) => {
     try {
-        const userId = req.user._id;
+        const userId = req.user?._id;
 
         if (!userId) {
-            return res.status(401).json({
-                message: "Not authorized"
-            });
+            return res.status(401).json({ message: "Not authorized" });
         }
 
         const user = await User.findById(userId).select('-password');
-
         if (!user) {
-            return res.status(404).json({
-                message: "User not found"
-            });
+            return res.status(404).json({ message: "User not found" });
         }
 
-        res.status(200).json(user);
+        res.status(200).json({ user }); // wrapped in { user } for consistent frontend access
     } catch (error) {
         console.log("Error in getLoggedInUser controller", error.message);
-        res.status(500).json({
-            message: "Internal Server Error"
-        });
+        res.status(500).json({ message: "Internal Server Error" });
     }
 };
 
-// Check Auth 
+// Check Auth
 export const CheckAuth = async (req, res) => {
     try {
-        res.status(200).json(req.user);
+        res.status(200).json({ user: req.user });
     } catch (error) {
         console.log("Error in checkAuth controller", error.message);
-        res.status(500).json({
-            message: "Internal server Error"
-        });
+        res.status(500).json({ message: "Internal Server Error" });
     }
 };

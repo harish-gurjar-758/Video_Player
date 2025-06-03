@@ -25,6 +25,7 @@ export const loginApi = async (userData) => {
 
 // Get Logged-in User
 
+
 export const getLoggedInUserApi = async () => {
   const token = localStorage.getItem("token");
 
@@ -32,15 +33,11 @@ export const getLoggedInUserApi = async () => {
     throw new Error("No token found. Please log in.");
   }
 
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  };
-
   try {
-    const response = await axios.get(`${BASIC_URL}/auth/me`, config);
-    return response.data;
+    const response = await axios.get(`${BASIC_URL}/auth/me`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    return response.data; // expects { user: {...} }
   } catch (error) {
     throw new Error(error.response?.data?.message || "User not logged in.");
   }
@@ -48,7 +45,7 @@ export const getLoggedInUserApi = async () => {
 
 // Logout 
 
-export const logoutApi = async ()=>{
+export const logoutApi = async () => {
   try {
     await axios.post(`${BASIC_URL}/auth/logout`)
   } catch (error) {

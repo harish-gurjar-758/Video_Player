@@ -32,7 +32,9 @@ export default function CreateAccountForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4"
+      style={{ paddingTop: "70px" }}
+    >
       <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
         <div className="flex flex-col items-center mb-6">
           <VistroLogo />
@@ -90,9 +92,8 @@ export default function CreateAccountForm() {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full bg-indigo-600 text-white py-2 rounded-md text-center font-semibold hover:bg-indigo-500 transition ${
-              loading ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
+            className={`w-full bg-indigo-600 text-white py-2 rounded-md text-center font-semibold hover:bg-indigo-500 transition ${loading ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
           >
             {loading ? 'Creating...' : 'Sign Up'}
           </button>
