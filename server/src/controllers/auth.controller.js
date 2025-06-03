@@ -73,25 +73,25 @@ export const login = async (req, res) => {
 
         if (!user) {
             return res.status(400).json({
-                message: "Invalid credentials Email is invalid"
+                message: "Invalid credentials. Email is invalid."
             });
         }
 
         const isPasswordCorrect = await bcrypt.compare(password, user.password);
         if (!isPasswordCorrect) {
             return res.status(400).json({
-                message: "Invalid credentials Password is invalid"
+                message: "Invalid credentials. Password is invalid."
             });
         }
 
         generateToken(user._id, res);
 
         res.status(200).json({
-            _id: newUser._id,
-            username: newUser.username,
-            email: newUser.email,
-            profilePic: newUser.profilePic,
-            channelBanner: newUser.channelBanner,
+            _id: user._id,
+            username: user.username,
+            email: user.email,
+            profilePic: user.profilePic,
+            channelBanner: user.channelBanner,
         });
     } catch (error) {
         console.log("Error in login controller", error.message);
@@ -100,6 +100,7 @@ export const login = async (req, res) => {
         });
     }
 };
+
 
 // Get Logged In User
 
