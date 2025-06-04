@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import Profile from './pages/Profile';
 import ErrorBoundary from './pages/ErrorBoundary'; // import it
 import Login from './pages/Login';
+import CreateVideo from './pages/sections/CreateVideo';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path='/login' element={<Login />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path='/create-video' element={<CreateVideo />} />
         </Routes>
       </ErrorBoundary>
     </div>
