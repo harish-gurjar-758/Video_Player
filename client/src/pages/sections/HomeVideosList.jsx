@@ -36,7 +36,7 @@ export default function HomeVideosList() {
   };
 
   return (
-    <div className='position-relative'>
+    <div className='position-relative '>
 
       {/* Videos Card Groups */}
       <div className="w-100 container">
@@ -44,10 +44,10 @@ export default function HomeVideosList() {
           style={{ marginTop: "30px", marginBottom: "30px", width: "98%" }}
         >
           {videosData.map((item, index) => (
-            <div key={index} className="card shadow-lg py-2"
-              style={{ width: "300px", backgroundColor: "whitesmoke" }}
+            <div key={index} className="card shadow-lg py-2 bg-secondary"
+              style={{ width: "300px", backgroundColor: "whitesmoke", cursor: "pointer" }}
             >
-              <div className='d-flex align-center gap-3'>
+              <div className='d-flex align-center gap-3 '>
                 <img
                   src={item.profilePic}
                   className='rounded-circle ms-2 border border-danger border-2'

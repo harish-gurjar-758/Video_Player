@@ -8,7 +8,13 @@ function NavBar() {
     const token = localStorage.getItem("token"); // check login status
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top border-bottom shadow-sm" style={{ height: "70px" }}>
+        <nav className="navbar navbar-expand-lg navbar-dark fixed-top border-bottom shadow-sm"
+            style={{
+                height: "70px",
+                backgroundColor: "#00000096",
+                backdropFilter:"blur(5px)"
+            }}
+        >
             <div className="container-fluid">
 
                 {/* Logo */}

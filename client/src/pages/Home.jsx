@@ -28,11 +28,19 @@ export default function Home() {
 
     return (
         <div
-            className="d-flex h-full rounded-lg overflow-hidden gap-30"
+            className="d-flex h-100 vh-100 overflow-hidden bg-secondary bg-gradient"
             style={{ paddingTop: "70px" }}
         >
-            <Sidebar onSelect={setActiveSection} />
-            <div style={{ marginLeft: "20px", flex: 1 }}>
+            <Sidebar onSelect={setActiveSection} className="position-fixed-top" />
+            {/* Scrollable render section */}
+            <div
+                style={{
+                    flex: 1,
+                    height: "calc(100vh - 70px)",
+                    overflowY: "auto",
+                    // paddingRight: "20px",
+                }}
+            >
                 {renderSection()}
             </div>
         </div>

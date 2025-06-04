@@ -2,7 +2,12 @@ import React from 'react';
 
 export default function Sidebar({ onSelect }) {
     return (
-        <aside className="bg-dark text-white p-2 fixed-top-70" style={{ width: "200px", minHeight: "100vh" }}>
+        <aside className="text-white p-2 position-static"
+            style={{
+                width: "180px",
+                minHeight: "100vh",
+                backgroundColor: "#00000096"
+            }}>
             <ul className="nav flex-column gap-3">
                 <h6 className="nav-item" onClick={() => onSelect('home')} style={{ cursor: 'pointer' }}>
                     🏠 Home
